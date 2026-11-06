@@ -1,1 +1,22 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="22dp"><TextView android:id="@+id/subtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/home_subtitle" android:textSize="14sp" android:textColor="@color/ink" android:paddingBottom="12dp" /><TextView android:id="@+id/heading" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/app_name" android:textSize="25sp" android:textColor="@color/ink" android:paddingBottom="12dp" /><TextView android:id="@+id/avatar" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/avatar" android:textSize="40sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:gravity="center" android:background="@drawable/card_front" android:padding="14dp"/><TextView android:id="@+id/value_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/name" android:textSize="17sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:layout_marginTop="8dp"/><TextView android:id="@+id/value_gender" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/gender" android:textSize="17sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:layout_marginTop="8dp"/><TextView android:id="@+id/value_student_id" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/student_id" android:textSize="17sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:layout_marginTop="8dp"/><TextView android:id="@+id/value_phone" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/phone" android:textSize="17sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:layout_marginTop="8dp"/><TextView android:id="@+id/value_email" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/email" android:textSize="17sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:layout_marginTop="8dp"/><TextView android:id="@+id/value_hobbies" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/hobbies" android:textSize="17sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:layout_marginTop="8dp"/><TextView android:id="@+id/best" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/best_score" android:textSize="22sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:layout_marginTop="10dp"/><Button android:id="@+id/edit" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="10dp" android:text="@string/edit_profile" android:textAllCaps="false"/><Button android:id="@+id/play" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="10dp" android:text="@string/play_game" android:textAllCaps="false"/></LinearLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@color/ink" android:textColor="@color/paper"
+        android:paddingHorizontal="16dp" android:paddingVertical="8dp"
+        android:textSize="18sp" android:text="@string/app_name" />
+
+    <FrameLayout android:id="@+id/content" android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1" />
+
+    <RadioGroup android:id="@+id/tabs" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+        <RadioButton android:id="@+id/profile" android:layout_width="0dp"
+            android:layout_weight="1" android:layout_height="48dp" android:text="@string/profile_title" />
+        <RadioButton android:id="@+id/two_cards" android:layout_width="0dp"
+            android:layout_weight="1" android:layout_height="48dp" android:text="@string/two_cards" />
+        <RadioButton android:id="@+id/three_cards" android:layout_width="0dp"
+            android:layout_weight="1" android:layout_height="48dp" android:text="@string/three_cards" />
+    </RadioGroup>
+</LinearLayout>

@@ -1,5 +1,4 @@
 <resources>
-    <integer name="card_count">18</integer>
     <integer name="board_columns">6</integer>
     <dimen name="card_height">47dp</dimen>
 </resources>

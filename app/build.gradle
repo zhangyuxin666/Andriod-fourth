@@ -3,7 +3,7 @@ android {
  namespace 'cn.edu.sicnu.stu.zhangyuxin.fourth'
  compileSdk 37
  defaultConfig {
-  applicationId 'cn.edu.sicnu.stu.zhangyuxin.fifth'
+  applicationId 'cn.edu.sicnu.stu.zhangyuxin.sixth'
   minSdk 23
   targetSdk 34
   versionCode 1
@@ -19,4 +19,3 @@ dependencies {
  androidTestImplementation 'androidx.test:rules:1.6.1'
  androidTestImplementation 'androidx.test.ext:junit:1.2.1'
 }
-

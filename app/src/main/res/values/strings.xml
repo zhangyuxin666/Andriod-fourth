@@ -21,7 +21,7 @@
  <string name="best_score">游戏最高分：%1$d</string>
  <string name="edit_profile">修改个人信息</string>
  <string name="play_game">开始翻牌游戏</string>
- <string name="profile_title">信息修改</string>
+ <string name="profile_title">个人信息</string>
  <string name="profile_subtitle">修改后点击保存，取消将保留原信息</string>
  <string name="save">保存</string>
  <string name="cancel">取消</string>
@@ -30,7 +30,7 @@
  <string name="invalid_email">请输入正确的邮箱地址</string>
  <string name="saved">个人信息已更新</string>
  <string name="game_title">翻牌游戏</string>
- <string name="game_subtitle">三张同点数 +16 · 三张同花色 +4 · 失败 −2 · 每次翻开 −1</string>
+ <string name="game_subtitle">同点数 +16 · 同花色 +4 · 失败 −2 · 每次翻开 −1</string>
  <string name="score">得分：%1$d</string>
  <string name="progress">已匹配：%1$d / %2$d</string>
  <string name="reset">重置游戏</string>
@@ -39,10 +39,10 @@
  <string name="card_hidden">第%1$d张牌，未翻开</string>
  <string name="card_face">第%1$d张牌，%2$s</string>
  <string name="matched">已匹配</string>
- <string name="initial_hint">依次翻开三张牌，寻找同点数或同花色组合</string>
+ <string name="initial_hint">依次翻开 %1$d 张牌，寻找同点数或同花色组合</string>
  <string name="chosen_hint">已选 %1$d 张，再选 %2$d 张</string>
- <string name="match_hint">三张牌匹配成功，已锁定</string>
- <string name="mismatch_hint">三张牌不匹配，扣除 2 分并盖回</string>
+ <string name="match_hint">匹配成功，已锁定</string>
+ <string name="mismatch_hint">匹配失败，扣除 2 分并盖回</string>
  <string name="complete">本局结束，得分 %1$d，可重置再挑战</string>
  <string name="unmatched_end">剩余牌没有匹配组合，本局结束，得分 %1$d</string>
  <string name="field_value">%1$s：%2$s</string>
@@ -59,4 +59,7 @@
  <string name="key_test">test_deck</string>
  <string name="about">关于</string>
  <string name="about_message">RecyclerView 翻牌游戏\n张雨鑫 2024110548\n竖屏 24 张，横屏 18 张。每次比较三张牌。</string>
+ <string name="two_cards">两张牌</string>
+ <string name="three_cards">三张牌</string>
+ <string name="save_failed">保存失败，请重试</string>
 </resources>
