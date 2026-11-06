@@ -5,10 +5,12 @@ import org.junit.Test
 import java.io.*
 
 class GameModelTest {
-    @Test fun rankMatchHasPriorityOverSuit() {
-        assertEquals(4, Card("♥", "A").match(arrayOf(Card("♣", "A"))))
-        assertEquals(1, Card("♥", "A").match(arrayOf(Card("♥", "K"))))
-        assertEquals(0, Card("♥", "A").match(arrayOf(Card("♣", "K"))))
+    @Test fun threeCardsMustShareRankOrSuit() {
+        val ace = Card("♥", "A")
+        assertEquals(4, ace.match(arrayOf(Card("♣", "A"), Card("♦", "A"))))
+        assertEquals(1, ace.match(arrayOf(Card("♥", "K"), Card("♥", "Q"))))
+        assertEquals(0, ace.match(arrayOf(Card("♥", "K"), Card("♣", "Q"))))
+        assertEquals(0, ace.match(arrayOf(Card("♥", "K"))))
     }
     @Test fun deckContains52UniqueCardsAndExhausts() {
         val deck = Deck()
@@ -16,43 +18,50 @@ class GameModelTest {
         assertEquals(52, drawn.toSet().size)
         assertNull(deck.drawRandomCard())
     }
-    @Test fun rankPairScores14AndLocksCards() {
-        val game = CardMatchingGame(listOf(Card("♥", "A"), Card("♣", "A")))
-        game.chooseCardAtIndex(0); assertEquals(-1, game.score)
-        game.chooseCardAtIndex(1); assertEquals(14, game.score)
-        assertEquals(2, game.matchedCount)
-        game.chooseCardAtIndex(0); assertEquals(14, game.score)
+    @Test fun rankTripleScores13AndLocksCards() {
+        val game = CardMatchingGame(listOf(Card("♥", "A"), Card("♣", "A"), Card("♦", "A")))
+        game.chooseCardAtIndex(0)
+        game.chooseCardAtIndex(1)
+        assertEquals(-2, game.score)
+        assertEquals(2, game.selectedCount)
+        game.chooseCardAtIndex(2)
+        assertEquals(13, game.score)
+        assertEquals(3, game.matchedCount)
+        game.chooseCardAtIndex(0)
+        assertEquals(13, game.score)
         assertTrue(game.isFinished)
     }
-    @Test fun suitPairScores2() {
-        val game = CardMatchingGame(listOf(Card("♥", "A"), Card("♥", "K")))
-        game.chooseCardAtIndex(0); game.chooseCardAtIndex(1)
-        assertEquals(2, game.score)
+    @Test fun suitTripleScores1() {
+        val game = CardMatchingGame(listOf(Card("♥", "A"), Card("♥", "K"), Card("♥", "Q")))
+        (0..2).forEach(game::chooseCardAtIndex)
+        assertEquals(1, game.score)
     }
-    @Test fun mismatchScoresMinus4AndTurnsOldCardBack() {
-        val game = CardMatchingGame(listOf(Card("♥", "A"), Card("♣", "K")))
-        game.chooseCardAtIndex(0); game.chooseCardAtIndex(1)
-        assertEquals(-4, game.score)
-        assertFalse(game.cardAtIndex(0).isChosen)
-        assertTrue(game.cardAtIndex(1).isChosen)
+    @Test fun mismatchScoresMinus5AndTurnsAllThreeBack() {
+        val game = CardMatchingGame(listOf(Card("♥", "A"), Card("♣", "K"), Card("♠", "Q")))
+        (0..2).forEach(game::chooseCardAtIndex)
+        assertEquals(-5, game.score)
+        assertEquals(0, game.selectedCount)
         assertEquals(0, game.matchedCount)
         assertTrue(game.isFinished)
     }
     @Test fun unchooseDoesNotChargeAgain() {
-        val game = CardMatchingGame(16)
+        val game = CardMatchingGame(24)
         game.chooseCardAtIndex(0); game.chooseCardAtIndex(0)
         assertEquals(-1, game.score)
         assertFalse(game.cardAtIndex(0).isChosen)
     }
     @Test fun freshGameResetsScoreAndCards() {
-        val game = CardMatchingGame(16)
-        assertEquals(16, game.cardCount); assertEquals(0, game.score)
+        val game = CardMatchingGame(24)
+        game.chooseCardAtIndex(0)
+        game.reset()
+        assertEquals(0, game.selectedCount)
+        assertEquals(24, game.cardCount); assertEquals(0, game.score)
         assertEquals(0, game.matchedCount)
-        assertEquals(16, (0..15).map { game.cardAtIndex(it).toString() }.toSet().size)
+        assertEquals(24, (0..23).map { game.cardAtIndex(it).toString() }.toSet().size)
     }
     @Test(expected = IllegalArgumentException::class) fun invalidCountRejected() { CardMatchingGame(53) }
     @Test fun serializationPreservesTurnAndScore() {
-        val game = CardMatchingGame(16); game.chooseCardAtIndex(0)
+        val game = CardMatchingGame(24); game.chooseCardAtIndex(0)
         val bytes = ByteArrayOutputStream()
         ObjectOutputStream(bytes).use { it.writeObject(game) }
         val restored = ObjectInputStream(ByteArrayInputStream(bytes.toByteArray())).use { it.readObject() as CardMatchingGame }

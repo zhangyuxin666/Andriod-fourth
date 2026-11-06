@@ -1,1 +1,32 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="22dp"><TextView android:id="@+id/heading" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/game_title" android:textSize="28sp" android:textColor="@color/ink" android:paddingBottom="12dp" /><TextView android:id="@+id/rules" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/game_subtitle" android:textSize="13sp" android:textColor="@color/ink" android:paddingBottom="12dp" /><TextView android:id="@+id/score" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/score" android:textSize="26sp" android:textColor="@color/ink" android:paddingBottom="12dp" /><TextView android:id="@+id/progress" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/progress" android:textSize="15sp" android:textColor="@color/ink" android:paddingBottom="12dp" /><GridLayout android:id="@+id/board" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:columnCount="4" android:rowCount="4"/><TextView android:id="@+id/hint" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/initial_hint" android:textSize="15sp" android:textColor="@color/ink" android:paddingBottom="12dp" android:minHeight="60dp" android:gravity="center_vertical"/><Button android:id="@+id/reset" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="10dp" android:text="@string/reset" android:textAllCaps="false"/><Button android:id="@+id/exit" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="10dp" android:text="@string/exit" android:textAllCaps="false"/></LinearLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="12dp">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/game_title" android:textSize="22sp" android:textColor="@color/ink" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/game_subtitle" android:textSize="13sp" android:textColor="@color/ink" />
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:paddingVertical="6dp">
+        <TextView android:id="@+id/score" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:textSize="17sp" android:textColor="@color/ink" />
+        <TextView android:id="@+id/progress" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:textSize="16sp" android:textColor="@color/ink" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/board"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+
+    <TextView android:id="@+id/hint" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:minHeight="32dp" android:gravity="center_vertical"
+        android:textSize="14sp" android:textColor="@color/ink" android:accessibilityLiveRegion="polite" />
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/reset" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="48dp" android:text="@string/reset" />
+        <Button android:id="@+id/exit" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="48dp" android:text="@string/exit" />
+    </LinearLayout>
+</LinearLayout>
