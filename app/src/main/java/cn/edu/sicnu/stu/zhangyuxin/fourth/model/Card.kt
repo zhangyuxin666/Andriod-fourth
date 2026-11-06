@@ -11,15 +11,9 @@ class Card(private var suit: String, private var rank: String, var isChosen:Bool
     }
 
     fun match(otherCards: Array<Card>): Int {
-        var score = 0
-        if (otherCards.size == 1) {
-            val otherCard = otherCards[0]
-            if (otherCard.rank == rank) {
-                score = 4
-            } else if (otherCard.suit == suit) {
-                score = 1
-            }
-        }
-        return score
+        if (otherCards.size != 2) return 0
+        if (otherCards.all { it.rank == rank }) return 4
+        if (otherCards.all { it.suit == suit }) return 1
+        return 0
     }
 }
